@@ -1,0 +1,1117 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="theme-color" content="#ffffff">
+  <meta name="description" content="張榮麟｜以 16 年建築專業實務為根基，整合建築、數據科學與人工智慧，探索智慧設計、專案管理及跨領域創新的更多可能。">
+  <meta name="robots" content="index,follow">
+  <title>張榮麟 Jung-Lin Chang｜Architecture × Data Science × AI</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Noto+Sans+TC:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'Noto Sans TC', 'ui-sans-serif', 'system-ui'],
+          },
+          colors: {
+            ink: '#1F2937',
+            muted: '#526274',
+            bluebrand: '#005BAC',
+            violetbrand: '#0A3D91',
+            mintbrand: '#7AC143',
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    :root {
+      --ink: #0f172a;
+      --muted: #64748b;
+      --blue: #2563eb;
+      --violet: #7c3aed;
+      --mint: #10b981;
+      --line: #e2e8f0;
+      --paper: #ffffff;
+      --soft: #f8fafc;
+      --pale-blue: #eff6ff;
+      --content: 1200px;
+    }
+    * { box-sizing: border-box; }
+    .sr-only { position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0, 0, 0, 0) !important; white-space: nowrap !important; border: 0 !important; }
+    .sr-only.focus\:not-sr-only:focus { position: fixed !important; width: auto !important; height: auto !important; padding: 12px 20px !important; margin: 0 !important; overflow: visible !important; clip: auto !important; white-space: normal !important; }
+    html { scroll-behavior: smooth; scroll-padding-top: 92px; }
+    body {
+      margin: 0;
+      color: var(--ink);
+      background: var(--paper);
+      font-family: Inter, "Noto Sans TC", ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      line-height: 1.7;
+      overflow-x: hidden;
+      -webkit-font-smoothing: antialiased;
+    }
+    body.menu-open { overflow: hidden; }
+    a { color: inherit; text-decoration: none; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    button { font: inherit; }
+    img, svg { max-width: 100%; }
+    ::selection { background: #dbeafe; color: #0f172a; }
+    .container-wide { width: min(var(--content), calc(100% - 48px)); margin-inline: auto; }
+    .section { position: relative; padding: clamp(76px, 9vw, 132px) 0; }
+    .section-soft { background: linear-gradient(180deg, #f8fafc 0%, #f9fbff 100%); }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 10px; color: var(--blue);
+      font-size: 11px; letter-spacing: .18em; text-transform: uppercase; font-weight: 800;
+    }
+    .eyebrow::before { content: ""; width: 24px; height: 1px; background: currentColor; }
+    .section-heading { max-width: 760px; margin-bottom: 48px; }
+    .section-heading h2 { margin: 15px 0 18px; font-size: clamp(2rem, 4.5vw, 3.65rem); line-height: 1.2; letter-spacing: -.055em; font-weight: 700; }
+    .section-heading h2 .gradient-text { background: linear-gradient(100deg, var(--blue), var(--violet)); -webkit-background-clip: text; background-clip: text; color: transparent; }
+    .section-heading p { max-width: 680px; color: var(--muted); font-size: clamp(.98rem, 1.3vw, 1.1rem); line-height: 1.95; }
+    .micro-label { font-size: 10px; letter-spacing: .15em; text-transform: uppercase; font-weight: 800; color: #94a3b8; }
+    .btn {
+      display: inline-flex; align-items: center; justify-content: center; gap: 11px; min-height: 50px;
+      padding: 13px 20px; border-radius: 999px; border: 1px solid #dbe4f0; background: rgba(255,255,255,.82);
+      color: var(--ink); font-weight: 700; font-size: 13px; transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease, background .25s ease;
+      cursor: pointer;
+    }
+    .btn:hover { transform: translateY(-2px); border-color: #93c5fd; box-shadow: 0 10px 28px rgba(37,99,235,.12), 0 0 0 4px rgba(16,185,129,.07); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline: 3px solid #60a5fa; outline-offset: 4px; }
+    .btn-primary { color: white; border-color: transparent; background: linear-gradient(110deg, #2563eb 0%, #4f46e5 55%, #7c3aed 100%); box-shadow: 0 12px 30px rgba(37,99,235,.18); }
+    .btn-primary:hover { border-color: transparent; box-shadow: 0 15px 34px rgba(37,99,235,.24), 0 0 0 4px rgba(16,185,129,.12); }
+    .btn-text { padding-inline: 2px; border: 0; border-radius: 0; background: transparent; min-height: 40px; box-shadow: none; }
+    .btn-text:hover { box-shadow: none; transform: translateX(3px); }
+    .btn svg { width: 16px; height: 16px; flex: none; }
+
+    /* Navigation */
+    .site-header { position: fixed; inset: 0 0 auto; z-index: 100; transition: background .25s ease, box-shadow .25s ease, border-color .25s ease; border-bottom: 1px solid transparent; }
+    .site-header.scrolled { background: rgba(255,255,255,.86); backdrop-filter: blur(18px); -webkit-backdrop-filter: blur(18px); border-color: rgba(226,232,240,.8); box-shadow: 0 8px 24px rgba(15,23,42,.035); }
+    .nav-shell { min-height: 78px; display: flex; align-items: center; justify-content: space-between; gap: 24px; }
+    .brand { display: inline-flex; align-items: center; gap: 11px; min-width: 230px; }
+    .brand-mark { display: grid; place-items: center; width: 37px; height: 37px; border: 1px solid #bfdbfe; border-radius: 12px; color: var(--blue); background: linear-gradient(145deg, #fff, #eff6ff); font-size: 12px; font-weight: 800; letter-spacing: -.08em; }
+    .brand-text { display: flex; flex-direction: column; line-height: 1.25; }
+    .brand-text strong { font-size: 12px; letter-spacing: .08em; }
+    .brand-text span { color: #94a3b8; font-size: 9px; margin-top: 4px; letter-spacing: .16em; text-transform: uppercase; }
+    .nav-links { display: flex; align-items: center; justify-content: center; gap: clamp(15px, 2.4vw, 31px); }
+    .nav-links a { position: relative; padding: 8px 0; font-size: 12px; font-weight: 600; color: #64748b; transition: color .2s ease; white-space: nowrap; }
+    .nav-links a::after { content: ""; position: absolute; left: 0; bottom: 1px; width: 0; height: 2px; border-radius: 3px; background: linear-gradient(90deg, var(--blue), var(--violet)); transition: width .2s ease; }
+    .nav-links a:hover, .nav-links a[aria-current="location"] { color: var(--ink); }
+    .nav-links a:hover::after, .nav-links a[aria-current="location"]::after { width: 100%; }
+    .nav-cta { min-height: 40px; padding: 10px 16px; font-size: 11px; white-space: nowrap; }
+    .menu-toggle { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border: 1px solid var(--line); border-radius: 50%; background: white; color: var(--ink); }
+    .menu-toggle svg { width: 20px; height: 20px; }
+
+    /* Hero */
+    .hero { min-height: 780px; min-height: min(900px, 100svh); display: flex; align-items: center; padding: 136px 0 74px; position: relative; isolation: isolate; overflow: hidden; }
+    .hero::before { content: ""; position: absolute; inset: 0; z-index: -3; background: radial-gradient(ellipse at 71% 42%, rgba(219,234,254,.7), transparent 35%), radial-gradient(ellipse at 92% 18%, rgba(237,233,254,.65), transparent 26%), linear-gradient(180deg, #fff 0%, #fff 70%, #fbfdff 100%); }
+    .hero-grid-bg { position: absolute; inset: 0; z-index: -2; pointer-events: none; opacity: .47; background-image: linear-gradient(rgba(148,163,184,.13) 1px, transparent 1px), linear-gradient(90deg, rgba(148,163,184,.13) 1px, transparent 1px); background-size: 52px 52px; mask-image: linear-gradient(to right, transparent 2%, #000 52%, #000 100%); }
+    .hero-layout { display: grid; grid-template-columns: minmax(0, .95fr) minmax(420px, 1.05fr); align-items: center; gap: clamp(25px, 4vw, 76px); }
+    .hero-copy { position: relative; z-index: 2; padding-bottom: 16px; }
+    .availability { display: inline-flex; gap: 9px; align-items: center; padding: 7px 12px; margin-bottom: 25px; border: 1px solid #dbeafe; border-radius: 999px; background: rgba(255,255,255,.76); color: #475569; font-size: 10px; letter-spacing: .05em; font-weight: 700; }
+    .availability-dot { width: 7px; height: 7px; border-radius: 50%; background: var(--mint); box-shadow: 0 0 0 4px rgba(16,185,129,.1); }
+    .hero h1 { margin: 0; max-width: 680px; min-height: 2.36em; font-size: clamp(2.15rem, 4vw, 4rem); letter-spacing: -.06em; line-height: 1.14; font-weight: 800; }
+    .hero h1 .line-two { display: block; margin-top: 5px; white-space: pre-line; }
+    .hero h1 .blue-word { color: var(--blue); }
+    .hero h1 .type-caret { display: inline-block; width: 3px; height: .84em; margin-left: 7px; vertical-align: -.04em; background: #7c3aed; animation: caretBlink 1s steps(2, start) infinite; }
+    .hero-lead { color: #475569; font-size: clamp(1rem, 1.55vw, 1.2rem); font-weight: 600; margin: 25px 0 11px; line-height: 1.8; }
+    .hero-description { max-width: 540px; color: var(--muted); font-size: 14px; line-height: 2; margin: 0; }
+    .hero-actions { display: flex; align-items: center; flex-wrap: wrap; gap: 12px; margin-top: 29px; }
+    .hero-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 35px; }
+    .hero-tag { display: inline-flex; align-items: center; gap: 8px; padding: 8px 11px; background: rgba(255,255,255,.66); border: 1px solid #e2e8f0; border-radius: 8px; font-size: 10px; font-weight: 700; color: #475569; }
+    .hero-tag i { display: block; width: 6px; height: 6px; border-radius: 2px; background: var(--blue); }
+    .hero-tag:nth-child(2) i { background: var(--violet); }
+    .hero-tag:nth-child(3) i { background: var(--mint); }
+    .hero-art { position: relative; min-height: 520px; display: grid; place-items: center; }
+    .art-glow { position: absolute; width: min(90%, 500px); aspect-ratio: 1; border-radius: 50%; background: radial-gradient(circle, rgba(191,219,254,.66), rgba(221,214,254,.26) 42%, transparent 70%); filter: blur(10px); }
+    .art-ring { position: absolute; border: 1px solid rgba(96,165,250,.28); border-radius: 50%; transform: rotate(-23deg); }
+    .art-ring.one { width: 490px; height: 280px; }
+    .art-ring.two { width: 430px; height: 350px; transform: rotate(54deg); border-color: rgba(167,139,250,.28); }
+    .art-ring.three { width: 520px; height: 430px; transform: rotate(-51deg); border-style: dashed; border-color: rgba(148,163,184,.25); }
+    .architecture-svg { width: min(100%, 590px); position: relative; z-index: 1; filter: drop-shadow(0 22px 28px rgba(37,99,235,.08)); animation: floatArchitect 8s ease-in-out infinite; overflow: visible; }
+    .art-chip { position: absolute; z-index: 3; padding: 11px 14px; min-width: 130px; border: 1px solid rgba(255,255,255,.9); background: rgba(255,255,255,.76); box-shadow: 0 12px 35px rgba(15,23,42,.07); backdrop-filter: blur(12px); border-radius: 13px; }
+    .art-chip span { display: block; color: #94a3b8; font-size: 9px; letter-spacing: .11em; text-transform: uppercase; }
+    .art-chip strong { display: block; color: #334155; font-size: 12px; margin-top: 3px; }
+    .art-chip .chip-dot { display: inline-block; width: 6px; height: 6px; border-radius: 50%; margin-right: 5px; background: var(--mint); }
+    .chip-top { top: 54px; right: 0; }
+    .chip-left { left: -5px; top: 44%; }
+    .chip-bottom { right: 28px; bottom: 42px; }
+    .hero-index { position: absolute; right: 0; bottom: -12px; writing-mode: vertical-rl; font-size: 9px; letter-spacing: .2em; color: #94a3b8; }
+    .scroll-cue { display: inline-flex; align-items: center; gap: 11px; margin-top: 29px; color: #94a3b8; font-size: 9px; text-transform: uppercase; letter-spacing: .18em; }
+    .scroll-cue span { display: grid; place-items: center; width: 25px; height: 25px; border: 1px solid #dbe4f0; border-radius: 50%; animation: bob 1.8s ease-in-out infinite; }
+    .scroll-cue svg { width: 12px; height: 12px; }
+    .status-tip { font-size: 9px; color: #64748b; border: 1px solid #d1fae5; border-radius: 999px; background: #f0fdf4; padding: 5px 8px; margin-left: 2px; opacity: 0; transform: translateY(4px); transition: opacity .2s ease, transform .2s ease; white-space: nowrap; }
+    .btn-primary:hover .status-tip, .btn-primary:focus-visible .status-tip { opacity: 1; transform: translateY(0); }
+
+    /* Shared layouts */
+    .split-heading { display: flex; align-items: end; justify-content: space-between; gap: 30px; }
+    .split-heading .section-heading { margin-bottom: 0; }
+    .side-note { max-width: 250px; color: #94a3b8; font-size: 11px; line-height: 1.8; padding-bottom: 8px; }
+    .rule { height: 1px; background: linear-gradient(90deg, #cbd5e1, transparent); }
+
+    /* About */
+    .about-grid { display: grid; grid-template-columns: minmax(280px, .78fr) minmax(0, 1.22fr); gap: clamp(44px, 8vw, 112px); align-items: start; }
+    .about-visual { position: sticky; top: 115px; }
+    .portrait-placeholder { position: relative; min-height: 470px; overflow: hidden; border: 1px solid #dbeafe; background: linear-gradient(145deg, #f8fbff, #eff6ff 48%, #f5f3ff); }
+    .portrait-placeholder::before { content: ""; position: absolute; inset: 0; background: linear-gradient(90deg, rgba(148,163,184,.12) 1px, transparent 1px), linear-gradient(rgba(148,163,184,.12) 1px, transparent 1px); background-size: 28px 28px; mask-image: linear-gradient(to bottom, #000, transparent 90%); }
+    .portrait-art { position: absolute; inset: 10% 3% 12%; width: 94%; height: 78%; }
+    .portrait-caption { position: absolute; inset: auto 20px 20px; display: flex; align-items: end; justify-content: space-between; gap: 15px; padding-top: 15px; border-top: 1px solid rgba(148,163,184,.45); }
+    .portrait-caption strong { display: block; font-size: 12px; }
+    .portrait-caption span { display: block; color: #64748b; font-size: 9px; letter-spacing: .08em; margin-top: 3px; }
+    .portrait-caption .micro-label { text-align: right; font-size: 8px; }
+    .experience-stamp { position: absolute; top: 22px; right: 20px; border: 1px solid rgba(191,219,254,.95); background: rgba(255,255,255,.82); border-radius: 12px; padding: 12px 14px; box-shadow: 0 10px 28px rgba(37,99,235,.07); }
+    .experience-stamp strong { display: block; color: var(--blue); font-size: 25px; line-height: 1.1; letter-spacing: -.06em; }
+    .experience-stamp span { color: var(--muted); font-size: 9px; }
+    .about-quote { font-size: clamp(1.4rem, 2.7vw, 2.1rem); line-height: 1.5; letter-spacing: -.04em; font-weight: 700; margin: 0 0 25px; }
+    .about-quote em { color: var(--blue); font-style: normal; }
+    .about-intro { color: #64748b; font-size: 14px; line-height: 2.05; margin-bottom: 36px; }
+    .recent-project { display: grid; grid-template-columns: minmax(0, 1.08fr) minmax(280px, .92fr); gap: clamp(28px, 6vw, 76px); align-items: center; margin-top: 72px; padding-top: 42px; border-top: 1px solid var(--line); }
+    .recent-project-media { position: relative; overflow: hidden; border-radius: 22px; background: var(--soft); box-shadow: 0 22px 50px rgba(15,23,42,.12); }
+    .recent-project-media img { display: block; width: 100%; aspect-ratio: 4 / 3; object-fit: cover; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .recent-project-media:hover img { transform: scale(1.045); }
+    .recent-project-media::after { content: "RECENT PROJECT / 2026"; position: absolute; left: 18px; bottom: 16px; padding: 7px 10px; border-radius: 999px; color: #fff; background: rgba(10,61,145,.86); font-size: 9px; font-weight: 800; letter-spacing: .12em; }
+    .recent-project-copy .eyebrow { margin-bottom: 12px; }
+    .recent-project-copy h3 { margin: 0 0 16px; font-size: clamp(1.65rem, 3vw, 2.55rem); line-height: 1.2; letter-spacing: -.05em; }
+    .recent-project-copy p { color: var(--muted); font-size: 14px; line-height: 2; margin: 0; }
+    .intro-video-section { background: #faf9f7; }
+    .intro-video-wrap { max-width: 960px; margin: 0 auto; }
+    .intro-video-card { position: relative; overflow: hidden; padding: 10px; border: 1px solid #d8d4cf; border-radius: 24px; background: #eeeae5; box-shadow: 0 24px 60px rgba(75,74,72,.12); }
+    .intro-video-frame { position: relative; aspect-ratio: 16 / 9; overflow: hidden; border-radius: 16px; background: #4b4a48; }
+    .intro-video-frame iframe { display: block; width: 100%; height: 100%; border: 0; }
+    .intro-video-caption { margin: 18px 10px 8px; color: #7a7975; font-size: 12px; line-height: 1.8; text-align: center; }
+    .portfolio-section { background: #f5f7fa; }
+    .portfolio-grid { display: grid; grid-template-columns: repeat(12, minmax(0, 1fr)); gap: 18px; }
+    .portfolio-card { position: relative; min-height: 230px; overflow: hidden; border-radius: 16px; background: #fff; border: 1px solid var(--line); box-shadow: 0 10px 24px rgba(31,41,55,.05); }
+    .portfolio-card:nth-child(1), .portfolio-card:nth-child(4), .portfolio-card:nth-child(7) { grid-column: span 7; }
+    .portfolio-card:nth-child(2), .portfolio-card:nth-child(3), .portfolio-card:nth-child(5), .portfolio-card:nth-child(6), .portfolio-card:nth-child(8) { grid-column: span 5; }
+    .portfolio-card img { display: block; width: 100%; height: 100%; min-height: 230px; object-fit: cover; transition: transform .65s cubic-bezier(.2,.7,.2,1); }
+    .portfolio-card:hover img { transform: scale(1.06); }
+    .portfolio-card figcaption { position: absolute; inset: auto 0 0; padding: 34px 18px 16px; color: #fff; background: linear-gradient(transparent, rgba(10,61,145,.9)); font-size: 13px; font-weight: 700; }
+    /* Portfolio: three equal columns with consistent image proportions */
+    .portfolio-grid { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .portfolio-card:nth-child(n) { grid-column: auto; aspect-ratio: 4 / 3; min-height: 0; }
+    .portfolio-card img { min-height: 0; height: 100%; aspect-ratio: 4 / 3; }
+    .journey { border-top: 1px solid var(--line); }
+    .journey-item { display: grid; grid-template-columns: 45px 1fr; gap: 17px; padding: 23px 0; border-bottom: 1px solid var(--line); }
+    .journey-number { color: #93c5fd; font-size: 12px; font-weight: 800; padding-top: 3px; }
+    .journey-item h3 { margin: 0 0 8px; font-size: 15px; font-weight: 700; letter-spacing: -.02em; }
+    .journey-item p { margin: 0; color: var(--muted); font-size: 12px; line-height: 1.95; }
+    .skill-line { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 22px; }
+    .skill-line span { border: 1px solid #e2e8f0; padding: 6px 10px; color: #475569; border-radius: 6px; font-size: 10px; background: white; }
+    .principle-band { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; margin-top: 60px; padding: 24px 28px; border: 1px solid #dbeafe; background: linear-gradient(100deg, #f8fbff, #fff 60%, #faf5ff); }
+    .principle-band p { margin: 0; font-size: 15px; font-weight: 700; }
+    .principle-band small { display: block; color: #64748b; margin-top: 4px; font-size: 11px; }
+    .principle-icon { display: grid; place-items: center; width: 48px; height: 48px; border-radius: 14px; color: var(--blue); background: white; border: 1px solid #dbeafe; }
+
+    /* Expertise */
+    .service-intro-row { display: flex; align-items: start; justify-content: space-between; gap: 24px; margin-bottom: 48px; }
+    .service-intro-row .section-heading { margin-bottom: 0; }
+    .service-intro-aside { max-width: 280px; color: var(--muted); font-size: 12px; line-height: 1.95; margin-top: 24px; }
+    .services-list { border-top: 1px solid #dbe4f0; }
+    .service-row { display: grid; grid-template-columns: 72px minmax(210px, .8fr) minmax(0, 1.1fr) 180px; align-items: center; gap: 28px; padding: 31px 0; border-bottom: 1px solid #dbe4f0; transition: padding .25s ease; }
+    .service-row:hover { padding-inline: 10px; }
+    .service-number { color: #94a3b8; font-size: 12px; font-weight: 800; align-self: start; padding-top: 7px; }
+    .service-title h3 { margin: 0; font-size: 20px; line-height: 1.5; letter-spacing: -.04em; font-weight: 700; }
+    .service-title span { display: block; color: var(--blue); font-size: 9px; font-weight: 800; letter-spacing: .15em; text-transform: uppercase; margin-bottom: 7px; }
+    .service-copy { color: var(--muted); font-size: 12px; line-height: 1.95; }
+    .service-copy strong { color: #334155; font-weight: 700; }
+    .service-visual { min-height: 112px; display: grid; place-items: center; border: 1px solid rgba(219,234,254,.85); background: rgba(255,255,255,.68); border-radius: 6px; overflow: hidden; }
+    .service-visual svg { width: 100%; height: 125px; }
+    .service-bottom { margin-top: 56px; display: grid; grid-template-columns: 1fr minmax(260px, .55fr); align-items: end; gap: 30px; }
+    .service-bottom blockquote { margin: 0; max-width: 750px; font-size: clamp(1.55rem, 3vw, 2.6rem); line-height: 1.4; letter-spacing: -.05em; font-weight: 700; }
+    .service-bottom blockquote span { color: var(--blue); }
+    .service-bottom p { color: var(--muted); margin: 0; font-size: 12px; line-height: 2; }
+
+    /* Projects */
+    .project-filters { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 29px; }
+    .filter-btn { border: 1px solid #dbe4f0; background: white; border-radius: 999px; padding: 8px 13px; color: #64748b; font-weight: 700; font-size: 10px; cursor: pointer; transition: all .2s ease; }
+    .filter-btn:hover, .filter-btn[aria-pressed="true"] { color: var(--blue); border-color: #93c5fd; background: #eff6ff; }
+    .projects-grid { display: grid; grid-template-columns: repeat(12, minmax(0,1fr)); gap: 24px; }
+    .project-card { min-width: 0; grid-column: span 6; border: 1px solid #e2e8f0; background: white; transition: transform .3s ease, border-color .3s ease, box-shadow .3s ease; }
+    .project-card:nth-child(3n + 1) { grid-column: span 7; }
+    .project-card:nth-child(3n + 2) { grid-column: span 5; }
+    .project-card:hover { transform: translateY(-4px); border-color: #bfdbfe; box-shadow: 0 18px 40px rgba(15,23,42,.06); }
+    .project-card[hidden] { display: none; }
+    .project-art { position: relative; height: clamp(210px, 28vw, 330px); overflow: hidden; background: linear-gradient(140deg, #f8fbff, #edf4ff 60%, #f6f3ff); }
+    .project-art::after { content: "示範版型・非實際專案"; position: absolute; right: 12px; bottom: 11px; color: rgba(71,85,105,.65); font-size: 8px; letter-spacing: .08em; background: rgba(255,255,255,.65); padding: 4px 7px; border: 1px solid rgba(226,232,240,.8); }
+    .project-art svg { display: block; width: 100%; height: 100%; transition: transform .7s cubic-bezier(.2,.7,.2,1); }
+    .project-card:hover .project-art svg { transform: scale(1.035); }
+    .project-info { padding: 22px 24px 24px; }
+    .project-meta { display: flex; justify-content: space-between; gap: 12px; color: #64748b; font-size: 9px; text-transform: uppercase; letter-spacing: .12em; font-weight: 800; }
+    .demo-pill { color: #b45309; background: #fffbeb; border: 1px solid #fde68a; padding: 3px 6px; border-radius: 4px; letter-spacing: .04em; white-space: nowrap; }
+    .project-info h3 { font-size: 18px; margin: 12px 0 7px; line-height: 1.5; letter-spacing: -.03em; }
+    .project-info p { color: var(--muted); margin: 0; font-size: 12px; line-height: 1.9; }
+    .project-tags { display: flex; flex-wrap: wrap; gap: 7px; margin-top: 17px; }
+    .project-tags span { font-size: 9px; color: #64748b; border-bottom: 1px solid #cbd5e1; padding-bottom: 3px; }
+    .project-note { margin-top: 28px; font-size: 10px; color: #94a3b8; line-height: 1.9; }
+
+    /* Insights */
+    .insights-grid { display: grid; grid-template-columns: minmax(260px, .82fr) minmax(0, 1.18fr); gap: clamp(38px, 8vw, 108px); }
+    .insights-aside { position: relative; }
+    .insights-aside h2 { margin: 15px 0 18px; max-width: 440px; font-size: clamp(2.1rem, 4.2vw, 3.4rem); line-height: 1.16; letter-spacing: -.06em; }
+    .insights-aside h2 span { color: var(--blue); }
+    .insights-aside p { color: var(--muted); font-size: 13px; line-height: 2; max-width: 370px; }
+    .insights-manifesto { position: relative; margin-top: 38px; padding: 18px 20px; border-left: 2px solid #93c5fd; background: linear-gradient(90deg, #eff6ff, transparent); color: #475569; font-size: 11px; line-height: 1.9; }
+    .insights-list { border-top: 1px solid var(--line); }
+    .article-row { display: grid; grid-template-columns: 43px minmax(0,1fr) 32px; gap: 17px; align-items: start; padding: 24px 0; border-bottom: 1px solid var(--line); }
+    .article-index { color: #94a3b8; font-size: 11px; font-weight: 800; padding-top: 2px; }
+    .article-category { color: var(--blue); font-size: 9px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase; }
+    .article-row h3 { margin: 7px 0 7px; font-size: 16px; line-height: 1.55; letter-spacing: -.025em; }
+    .article-row p { color: var(--muted); font-size: 11px; line-height: 1.85; margin: 0; }
+    .article-action { width: 31px; height: 31px; display: grid; place-items: center; border: 1px solid #dbe4f0; border-radius: 50%; color: #64748b; margin-top: 6px; transition: all .2s ease; }
+    .article-action:hover { color: var(--blue); background: #eff6ff; border-color: #bfdbfe; transform: translate(2px,-2px); }
+    .article-action svg { width: 13px; height: 13px; }
+    .article-demo-note { margin-top: 18px; color: #94a3b8; font-size: 10px; line-height: 1.8; }
+
+    /* Core products and technical solutions */
+    .solutions-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 22px; }
+    .solution-card { padding: 30px; background: rgba(255,255,255,.82); border: 1px solid #e2e8f0; border-radius: 18px; box-shadow: 0 12px 30px rgba(15,23,42,.04); transition: transform .25s ease, box-shadow .25s ease, border-color .25s ease; }
+    .solution-card:hover { transform: translateY(-5px); border-color: #bfdbfe; box-shadow: 0 18px 38px rgba(37,99,235,.1); }
+    .solution-icon { width: 56px; height: 56px; display: grid; place-items: center; margin-bottom: 22px; border-radius: 16px; color: var(--blue); background: #eff6ff; font-size: 23px; }
+    .solution-card:nth-child(2) .solution-icon { color: var(--violet); background: #f5f3ff; }
+    .solution-card:nth-child(3) .solution-icon { color: var(--mint); background: #ecfdf5; }
+    .solution-card h3 { margin: 0 0 10px; font-size: 19px; line-height: 1.45; }
+    .solution-card p { margin: 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
+
+    /* Contact and footer */
+    .contact-section { padding: clamp(80px, 10vw, 144px) 0 0; overflow: hidden; }
+    .contact-panel { position: relative; display: grid; grid-template-columns: minmax(0,1fr) minmax(280px,.55fr); gap: 44px; align-items: end; padding: clamp(32px, 5vw, 65px); background: linear-gradient(120deg, #f8fbff 0%, #eff6ff 48%, #f5f3ff 100%); border: 1px solid #dbeafe; overflow: hidden; }
+    .contact-panel::before { content: ""; position: absolute; right: -5%; top: -65%; width: 550px; aspect-ratio: 1; border: 1px solid rgba(96,165,250,.25); border-radius: 50%; box-shadow: 0 0 0 40px rgba(255,255,255,.16), 0 0 0 80px rgba(255,255,255,.12), 0 0 0 120px rgba(255,255,255,.1); pointer-events: none; }
+    .contact-content, .contact-actions { position: relative; z-index: 1; }
+    .contact-content h2 { margin: 15px 0 8px; font-size: clamp(2.4rem, 5vw, 4.65rem); line-height: 1.05; letter-spacing: -.07em; font-weight: 800; }
+    .contact-content h3 { margin: 0 0 17px; font-size: clamp(1.25rem, 2.4vw, 1.8rem); letter-spacing: -.04em; }
+    .contact-content p { color: #64748b; font-size: 13px; max-width: 560px; line-height: 2; margin: 0; }
+    .contact-actions { display: flex; flex-direction: column; align-items: stretch; gap: 11px; }
+    .contact-actions .btn { width: 100%; }
+    .contact-social { display: flex; flex-direction: column; gap: 10px; margin-bottom: 5px; }
+    .contact-social-label { color: #475569; font-size: 12px; font-weight: 700; }
+    .social-links { display: flex; flex-wrap: wrap; gap: 10px; }
+    .social-link { width: 42px; height: 42px; display: inline-grid; place-items: center; border-radius: 12px; color: #fff; font-size: 19px; transition: transform .2s ease, box-shadow .2s ease; }
+    .social-link:hover { transform: translateY(-3px); box-shadow: 0 9px 18px rgba(15,23,42,.16); }
+    .social-line { background: #06c755; }
+    .social-facebook { background: #1877f2; }
+    .social-linkedin { background: #0a66c2; }
+    .social-github { background: #24292f; }
+    .form-link { display: inline-flex; align-items: center; justify-content: center; gap: 9px; width: 100%; padding: 12px 16px; border: 1px solid #dbeafe; border-radius: 12px; color: var(--blue); background: #fff; font-size: 13px; font-weight: 700; transition: background .2s ease, color .2s ease, transform .2s ease; }
+    .form-link:hover { color: #fff; background: var(--blue); transform: translateY(-2px); }
+
+    /* Morandi palette: muted blue, sage, dusty rose and warm neutrals */
+    :root {
+      --ink: #4b4a48;
+      --muted: #7a7975;
+      --blue: #879eaa;
+      --violet: #8f8a9a;
+      --mint: #9eae99;
+      --line: #d8d4cf;
+      --paper: #faf9f7;
+      --soft: #eeeae5;
+      --pale-blue: #e5ecee;
+      --teal: #91a5aa;
+      --cyan: #b6c6c5;
+    }
+    body { color: #4b4a48; background: #faf9f7; }
+    .section-soft, .portfolio-section { background: #eeeae5; }
+    .eyebrow, .nav-links a:hover, .nav-links a[aria-current="page"] { color: #7f969d; }
+    .btn-primary { background: #879eaa; box-shadow: 0 12px 30px rgba(75,74,72,.14); }
+    .btn-primary:hover, .form-link:hover { background: #6f858d; }
+    .btn:hover { border-color: #b6c6c5; box-shadow: 0 10px 28px rgba(75,74,72,.1); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline-color: #9eae99; }
+    .brand-mark { border-color: #b6c6c5; color: #718994; background: #f1f0ed; }
+    .hero::before { background: radial-gradient(ellipse at 71% 42%, rgba(182,198,197,.34), transparent 35%), radial-gradient(ellipse at 92% 18%, rgba(198,166,166,.2), transparent 26%), linear-gradient(180deg, #faf9f7 0%, #faf9f7 70%, #eeeae5 100%); }
+    .hero h1 .gradient-text { background-image: linear-gradient(100deg, #718994, #9e8f98); }
+    .hero h1 .type-caret { background: #9e8f98; }
+    .availability, .hero-tag, .filter-btn { border-color: #d8d4cf; background: rgba(250,249,247,.9); color: #6f6d69; }
+    .hero-tag i { background: #879eaa; }
+    .hero-tag:nth-child(2) i { background: #9e8f98; }
+    .hero-tag:nth-child(3) i { background: #9eae99; }
+    .service-row:hover, .project-card:hover, .solution-card:hover { border-color: #b6c6c5; }
+    .filter-btn:hover, .filter-btn[aria-pressed="true"] { color: #718994; border-color: #b6c6c5; background: #e5ecee; }
+    .solution-icon { color: #718994; background: #e5ecee; }
+    .solution-card:nth-child(2) .solution-icon { color: #9e8f98; background: #eee6e6; }
+    .solution-card:nth-child(3) .solution-icon { color: #81957c; background: #e8eee5; }
+    .recent-project-media::after { background: rgba(75,74,72,.82); }
+    .portfolio-card figcaption { background: linear-gradient(transparent, rgba(75,74,72,.82)); }
+    .contact-panel { background: #eeeae5; border-color: #d8d4cf; }
+    .form-link { color: #718994; border-color: #b6c6c5; background: #faf9f7; }
+    .social-line { background: #8fa58f; }
+    .social-facebook { background: #879eaa; }
+    /* Balanced type scale */
+    body { font-size: 15px; }
+    .hero h1 { max-width: 620px; font-size: clamp(2rem, 3.5vw, 3.5rem); line-height: 1.18; }
+    .section-heading h2 { font-size: clamp(1.8rem, 3.3vw, 3rem); line-height: 1.25; }
+    .contact-content h2 { font-size: clamp(2rem, 4vw, 3.5rem); line-height: 1.1; }
+    .contact-content h3 { font-size: clamp(1.1rem, 2vw, 1.45rem); }
+    .hero-lead { font-size: clamp(.95rem, 1.25vw, 1.08rem); }
+    .hero-description, .about-intro, .recent-project-copy p, .contact-content p { font-size: 13px; }
+    .section-heading p { font-size: 14px; }
+    .service-copy { font-size: 16px; line-height: 1.9; }
+    .project-info p, .solution-card p { font-size: 14px; line-height: 1.85; }
+    .contact-details { display: grid; gap: 5px; margin-top: 22px; color: #7a7975; font-size: 13px; line-height: 1.8; }
+    .contact-details strong { color: #4b4a48; }
+    .contact-form { grid-column: 1 / -1; display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 16px; margin-top: 28px; padding-top: 28px; border-top: 1px solid #d8d4cf; }
+    .contact-form h3 { grid-column: 1 / -1; margin: 0 0 2px; color: #4b4a48; font-size: 20px; }
+    .contact-form label { display: grid; gap: 7px; color: #6f6d69; font-size: 12px; font-weight: 700; }
+    .contact-form input, .contact-form select, .contact-form textarea { width: 100%; padding: 12px 13px; border: 1px solid #d8d4cf; border-radius: 10px; color: #4b4a48; background: #faf9f7; font: inherit; font-size: 13px; }
+    .contact-form textarea { min-height: 120px; resize: vertical; }
+    .contact-form .full-field { grid-column: 1 / -1; }
+    .contact-form button { grid-column: 1 / -1; justify-self: start; border: 0; cursor: pointer; }
+    .form-success-modal { position: fixed; inset: 0; z-index: 300; display: grid; place-items: center; padding: 20px; background: rgba(75,74,72,.34); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .25s ease, visibility .25s ease; }
+    .form-success-modal.is-visible { opacity: 1; visibility: visible; pointer-events: auto; }
+    .form-success-dialog { max-width: 420px; padding: 32px; border: 1px solid #d8d4cf; border-radius: 20px; color: #4b4a48; background: #faf9f7; box-shadow: 0 24px 70px rgba(75,74,72,.2); text-align: center; }
+    .form-success-dialog i { display: block; margin-bottom: 14px; color: #8fa58f; font-size: 36px; }
+    .form-success-dialog h3 { margin: 0 0 8px; font-size: 20px; }
+    .form-success-dialog p { margin: 0 0 20px; color: #7a7975; font-size: 13px; }
+    .contact-placeholder { margin-top: 12px; color: #64748b; font-size: 10px; line-height: 1.9; }
+    .contact-placeholder strong { color: #334155; }
+    .footer { padding: 30px 0 35px; }
+    .footer-row { display: flex; justify-content: space-between; align-items: center; gap: 20px; border-top: 1px solid var(--line); padding-top: 23px; }
+    .footer-brand { font-size: 11px; font-weight: 800; letter-spacing: .08em; }
+    .footer-note { color: #94a3b8; font-size: 10px; line-height: 1.8; text-align: right; }
+    .back-top { display: inline-flex; align-items: center; gap: 8px; color: #64748b; font-size: 10px; font-weight: 700; }
+    .back-top svg { width: 13px; height: 13px; }
+
+    /* Brand palette: Primary #005BAC / Navigation #0A3D91 / Teal #00A7B5 / Cyan #5CC8D7 / Green #7AC143 */
+    :root {
+      --ink: #1f2937;
+      --muted: #526274;
+      --blue: #005bac;
+      --violet: #0a3d91;
+      --mint: #7ac143;
+      --line: #d9e2ec;
+      --paper: #ffffff;
+      --soft: #f5f7fa;
+      --pale-blue: #eaf6fb;
+      --teal: #00a7b5;
+      --cyan: #5cc8d7;
+    }
+    body { color: var(--ink); background: var(--paper); }
+    ::selection { background: #5cc8d7; color: #1f2937; }
+    .section-soft { background: linear-gradient(180deg, #f5f7fa 0%, #ffffff 100%); }
+    .eyebrow { color: var(--teal); }
+    .btn-primary { background: linear-gradient(110deg, #005bac 0%, #0a3d91 58%, #00a7b5 100%); box-shadow: 0 12px 30px rgba(0,91,172,.2); }
+    .btn:hover { border-color: #5cc8d7; box-shadow: 0 10px 28px rgba(0,91,172,.14), 0 0 0 4px rgba(122,193,67,.12); }
+    .btn:focus-visible, a:focus-visible, button:focus-visible, input:focus-visible, textarea:focus-visible, select:focus-visible { outline-color: #00a7b5; }
+    .brand-mark { border-color: #5cc8d7; color: #005bac; background: linear-gradient(145deg, #fff, #eaf6fb); }
+    .nav-links a:hover, .nav-links a[aria-current="page"] { color: #005bac; }
+    .hero h1 .gradient-text, .section-heading h2 .gradient-text { background-image: linear-gradient(100deg, #005bac, #00a7b5); }
+    .hero h1 .type-caret { background: #00a7b5; }
+    .hero::before { background: radial-gradient(ellipse at 71% 42%, rgba(92,200,215,.24), transparent 35%), radial-gradient(ellipse at 92% 18%, rgba(122,193,67,.16), transparent 26%), linear-gradient(180deg, #fff 0%, #fff 70%, #f5f7fa 100%); }
+    .availability, .hero-tag { border-color: #d9e2ec; background: rgba(255,255,255,.88); }
+    .service-row:hover, .project-card:hover { border-color: #5cc8d7; }
+    .filter-btn:hover, .filter-btn[aria-pressed="true"] { color: #005bac; border-color: #5cc8d7; background: #eaf6fb; }
+    .solution-icon { color: #005bac; background: #eaf6fb; }
+    .solution-card:nth-child(2) .solution-icon { color: #00a7b5; background: #e6f8fa; }
+    .solution-card:nth-child(3) .solution-icon { color: #7ac143; background: #f1f9e9; }
+    .contact-panel { background: linear-gradient(120deg, #f5f7fa 0%, #eaf6fb 52%, #e8f7f8 100%); border-color: #d9e2ec; }
+    .form-link { color: #005bac; border-color: #5cc8d7; }
+    .form-link:hover { background: #005bac; }
+
+    /* Reveals & animation */
+    .js-ready .reveal { opacity: 0; transform: translateY(18px); transition: opacity .75s ease, transform .75s cubic-bezier(.2,.65,.2,1); }
+    .js-ready .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @keyframes caretBlink { 0%, 48% { opacity: 1; } 50%, 100% { opacity: 0; } }
+    @keyframes floatArchitect { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-9px); } }
+    @keyframes bob { 0%,100% { transform: translateY(0); } 50% { transform: translateY(4px); } }
+
+    @media (max-width: 1100px) {
+      .brand { min-width: auto; }
+      .nav-links { gap: 17px; }
+      .nav-links a { font-size: 11px; }
+      .nav-cta { display: none; }
+      .hero-layout { grid-template-columns: minmax(0, .95fr) minmax(350px, 1fr); gap: 20px; }
+      .hero-art { min-height: 460px; }
+      .art-ring.one { width: 400px; height: 240px; }
+      .art-ring.two { width: 360px; height: 300px; }
+      .art-ring.three { width: 430px; height: 360px; }
+      .service-row { grid-template-columns: 48px minmax(185px,.75fr) minmax(0,1fr) 145px; gap: 18px; }
+    }
+    @media (max-width: 850px) {
+      .hero h1 .line-two { white-space: pre-line; }
+      .contact-form { grid-template-columns: 1fr; }
+      .recent-project { grid-template-columns: 1fr; margin-top: 54px; }
+      .portfolio-card:nth-child(n) { grid-column: span 12; }
+      .solutions-grid { grid-template-columns: 1fr; }
+      .container-wide { width: min(var(--content), calc(100% - 36px)); }
+      .nav-shell { min-height: 70px; }
+      .menu-toggle { display: inline-flex; }
+      .nav-links { position: fixed; inset: 70px 0 auto; display: flex; align-items: stretch; flex-direction: column; gap: 0; padding: 14px 24px 24px; background: rgba(255,255,255,.97); backdrop-filter: blur(18px); border-bottom: 1px solid var(--line); box-shadow: 0 18px 30px rgba(15,23,42,.06); transform: translateY(-8px); opacity: 0; visibility: hidden; pointer-events: none; transition: opacity .2s ease, transform .2s ease, visibility .2s ease; }
+      .nav-links.is-open { transform: translateY(0); opacity: 1; visibility: visible; pointer-events: auto; }
+      .nav-links a { padding: 13px 2px; font-size: 13px; border-bottom: 1px solid #f1f5f9; }
+      .nav-links a::after { display: none; }
+      .nav-links a:last-child { border-bottom: 0; }
+      .hero { padding: 120px 0 66px; min-height: auto; }
+      .hero-layout { grid-template-columns: 1fr; gap: 14px; }
+      .hero-copy { max-width: 720px; }
+      .hero h1 { max-width: 720px; font-size: clamp(2.8rem, 8vw, 4.8rem); }
+      .hero-art { min-height: min(560px, 70vw); margin-top: 5px; }
+      .architecture-svg { width: min(100%, 540px); }
+      .art-ring.one { width: min(80vw, 460px); }
+      .art-ring.two { width: min(72vw, 410px); }
+      .art-ring.three { width: min(90vw, 500px); }
+      .chip-left { left: 2%; }
+      .chip-top { right: 3%; top: 5%; }
+      .chip-bottom { right: 5%; bottom: 5%; }
+      .hero-index { display: none; }
+      .about-grid { grid-template-columns: 1fr; gap: 36px; }
+      .about-visual { position: relative; top: auto; max-width: 600px; }
+      .portrait-placeholder { min-height: 380px; }
+      .portrait-art { inset: 4% 9% 12%; width: 82%; height: 82%; }
+      .service-row { grid-template-columns: 48px minmax(0,1fr) 145px; gap: 17px; }
+      .service-copy { grid-column: 2 / 3; grid-row: 2; }
+      .service-visual { grid-column: 3; grid-row: 1 / span 2; }
+      .service-bottom { grid-template-columns: 1fr; }
+      .split-heading { align-items: start; }
+      .side-note { display: none; }
+      .insights-grid { grid-template-columns: 1fr; gap: 38px; }
+      .insights-aside p { max-width: 620px; }
+      .contact-panel { grid-template-columns: 1fr; gap: 28px; }
+      .contact-actions { max-width: 390px; }
+    }
+    @media (max-width: 560px) {
+      html { scroll-padding-top: 78px; }
+      .container-wide { width: calc(100% - 34px); }
+      .section { padding: 76px 0; }
+      .section-heading { margin-bottom: 34px; }
+      .brand-mark { width: 34px; height: 34px; }
+      .brand-text strong { font-size: 11px; }
+      .brand-text span { font-size: 8px; }
+      .hero { padding: 111px 0 42px; }
+      .availability { margin-bottom: 20px; font-size: 9px; }
+      .hero h1 { font-size: clamp(2.35rem, 11vw, 3.45rem); letter-spacing: -.07em; }
+      .hero-lead { margin-top: 21px; font-size: 14px; }
+      .hero-description { font-size: 12px; }
+      .hero-actions { align-items: stretch; flex-direction: column; max-width: 360px; margin-top: 23px; }
+      .hero-actions .btn { width: 100%; }
+      .hero-tags { gap: 6px; margin-top: 24px; }
+      .hero-tag { font-size: 9px; padding: 7px 8px; }
+      .hero-art { min-height: 330px; margin: 0 -11px; }
+      .architecture-svg { width: 100%; }
+      .art-ring.one { width: 300px; height: 190px; }
+      .art-ring.two { width: 270px; height: 235px; }
+      .art-ring.three { width: 330px; height: 290px; }
+      .art-chip { min-width: 102px; padding: 8px 10px; border-radius: 10px; }
+      .art-chip span { font-size: 7px; }
+      .art-chip strong { font-size: 10px; }
+      .chip-top { right: 1%; top: 3%; }
+      .chip-left { left: 0; top: 42%; }
+      .chip-bottom { right: 1%; bottom: 1%; }
+      .scroll-cue { margin-top: 16px; }
+      .split-heading { display: block; }
+      .portrait-placeholder { min-height: 330px; }
+      .experience-stamp { right: 12px; top: 12px; padding: 9px 11px; }
+      .experience-stamp strong { font-size: 22px; }
+      .portrait-caption { inset-inline: 12px; bottom: 13px; }
+      .about-quote { font-size: 1.45rem; }
+      .about-intro { font-size: 12px; }
+      .journey-item { grid-template-columns: 30px 1fr; gap: 10px; padding: 20px 0; }
+      .journey-item h3 { font-size: 14px; }
+      .journey-item p { font-size: 11px; }
+      .principle-band { grid-template-columns: 1fr auto; padding: 18px; margin-top: 38px; }
+      .principle-band p { font-size: 13px; }
+      .service-intro-row { display: block; margin-bottom: 30px; }
+      .service-intro-aside { margin-top: 16px; font-size: 11px; }
+      .service-row { position: relative; grid-template-columns: 28px minmax(0,1fr); gap: 10px 12px; padding: 25px 0; }
+      .service-title h3 { font-size: 17px; }
+      .service-copy { grid-column: 2; grid-row: 2; font-size: 11px; }
+      .service-visual { grid-column: 2; grid-row: 3; width: 100%; min-height: 100px; margin-top: 5px; }
+      .service-visual svg { height: 110px; }
+      .service-number { font-size: 10px; }
+      .service-bottom { margin-top: 38px; gap: 17px; }
+      .service-bottom p { font-size: 11px; }
+      .project-filters { gap: 6px; }
+      .filter-btn { font-size: 9px; padding: 7px 10px; }
+      .projects-grid { display: grid; grid-template-columns: 1fr; gap: 18px; }
+      .project-card, .project-card:nth-child(3n + 1), .project-card:nth-child(3n + 2) { grid-column: auto; }
+      .project-art { height: 230px; }
+      .project-info { padding: 18px; }
+      .project-info h3 { font-size: 16px; }
+      .project-info p { font-size: 11px; }
+      .article-row { grid-template-columns: 28px minmax(0,1fr) 28px; gap: 9px; padding: 21px 0; }
+      .article-row h3 { font-size: 14px; }
+      .article-row p { font-size: 10px; }
+      .contact-section { padding-top: 76px; }
+      .contact-panel { padding: 26px 20px; gap: 25px; }
+      .contact-content h2 { font-size: clamp(2.35rem, 11vw, 3.3rem); }
+      .contact-content p { font-size: 11px; }
+      .contact-actions { max-width: none; }
+      .footer-row { align-items: flex-start; flex-direction: column; }
+      .footer-note { text-align: left; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      *, *::before, *::after { scroll-behavior: auto !important; animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+      .js-ready .reveal { opacity: 1; transform: none; }
+      .hero h1 .type-caret { display: none; }
+    }
+  </style>
+</head>
+<body>
+  <!--
+    網站資訊架構
+    個人品牌網站
+    ├── Home｜首頁：品牌主張、建築 × AI 主視覺、專業定位、預約諮詢
+    ├── About｜關於我：個人介紹、專業經歷、教育培訓、跨產業經驗、技術能力
+    ├── Expertise｜專業服務：智慧設計與法規輔助、數據驅動基地規劃、智慧監造與專案管理
+    ├── Projects｜作品與案例：Architecture、Construction & Supervision、AI & Data Innovation（示範版型）
+    ├── Insights｜觀點與文章：建築數位轉型、生成式 AI、資料科學、工程管理（示範文章）
+    └── Contact｜聯絡合作：合作邀約、教育培訓、Google Calendar 預約
+  -->
+
+  <a class="skip-link sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[200] focus:rounded-full focus:bg-white focus:px-5 focus:py-3 focus:shadow-lg" href="#main">跳至主要內容</a>
+
+  <header class="site-header" id="site-header">
+    <div class="container-wide nav-shell">
+      <a class="brand" href="#home" aria-label="張榮麟個人品牌首頁">
+        <span class="brand-mark" aria-hidden="true">JL<span style="color:#00a7b5">.</span></span>
+        <span class="brand-text"><strong>JUNG-LIN CHANG</strong><span>Architecture × Data × AI</span></span>
+      </a>
+      <nav class="nav-links" id="primary-navigation" aria-label="主要導覽">
+        <a href="#home" aria-current="location">Home</a>
+        <a href="#about">About</a>
+        <a href="#expertise">Expertise</a>
+        <a href="#projects">Projects</a>
+        <a href="#insights">Insights</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <a class="btn btn-primary nav-cta" href="https://calendar.app.google/kggoqgtTJ1fHBU5t9" target="_blank" rel="noopener noreferrer">預約專業諮詢 <span aria-hidden="true">↗</span></a>
+      <button class="menu-toggle" id="menu-toggle" type="button" aria-label="開啟導覽選單" aria-expanded="false" aria-controls="primary-navigation">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16" /></svg>
+      </button>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- Home / Hero -->
+    <section class="hero" id="home" aria-labelledby="hero-title">
+      <div class="hero-grid-bg" aria-hidden="true"></div>
+      <div class="container-wide hero-layout">
+        <div class="hero-copy">
+          <div class="availability"><span class="availability-dot" aria-hidden="true"></span> ARCHITECTURE · DATA SCIENCE · AI</div>
+          <h1 id="hero-title"><span class="sr-only">讓建築遇見 AI 專業創造未來</span><span class="line-two" aria-hidden="true"><span id="typed-title">讓建築遇見 AI
+專業創造未來</span><span class="type-caret"></span></span></h1>
+          <p class="hero-lead">以建築專業為根基，以數據驅動決策，<br class="hidden sm:block">以 AI 開創創新價值。</p>
+          <p class="hero-description">融合 16 年建築實務經驗、資料科學與人工智慧，探索智慧設計、專案管理與產業數位轉型的更多可能。</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="https://calendar.app.google/kggoqgtTJ1fHBU5t9" target="_blank" rel="noopener noreferrer">預約專業諮詢 <span aria-hidden="true">↗</span><span class="status-tip">Status: Ready to Connect</span></a>
+            <a class="btn" href="#about">探索我的專業 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+          </div>
+          <div class="hero-tags" aria-label="三大專業領域">
+            <span class="hero-tag"><i aria-hidden="true"></i> Architecture</span>
+            <span class="hero-tag"><i aria-hidden="true"></i> Data Science</span>
+            <span class="hero-tag"><i aria-hidden="true"></i> Artificial Intelligence</span>
+          </div>
+          <a class="scroll-cue" href="#about"><span><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m6 9 6 6 6-6"/></svg></span> Scroll to explore</a>
+        </div>
+
+        <div class="hero-art" aria-label="象徵建築、數據與人工智慧整合的抽象建築視覺" role="img">
+          <div class="art-glow" aria-hidden="true"></div>
+          <div class="art-ring one" aria-hidden="true"></div><div class="art-ring two" aria-hidden="true"></div><div class="art-ring three" aria-hidden="true"></div>
+          <svg class="architecture-svg" viewBox="0 0 620 590" fill="none" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+            <defs>
+              <linearGradient id="towerFace" x1="180" y1="120" x2="440" y2="440" gradientUnits="userSpaceOnUse"><stop stop-color="#DBEAFE" stop-opacity=".94"/><stop offset=".53" stop-color="#C7D2FE" stop-opacity=".68"/><stop offset="1" stop-color="#EDE9FE" stop-opacity=".78"/></linearGradient>
+              <linearGradient id="towerSide" x1="355" y1="160" x2="485" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#A5B4FC" stop-opacity=".8"/><stop offset="1" stop-color="#C4B5FD" stop-opacity=".34"/></linearGradient>
+              <linearGradient id="blueLine" x1="120" y1="0" x2="510" y2="520" gradientUnits="userSpaceOnUse"><stop stop-color="#60A5FA"/><stop offset=".55" stop-color="#6366F1"/><stop offset="1" stop-color="#A78BFA"/></linearGradient>
+              <linearGradient id="floor" x1="150" y1="420" x2="470" y2="520" gradientUnits="userSpaceOnUse"><stop stop-color="#DBEAFE" stop-opacity=".4"/><stop offset="1" stop-color="#DDD6FE" stop-opacity=".35"/></linearGradient>
+              <filter id="softShadow" x="70" y="80" width="480" height="450" filterUnits="userSpaceOnUse"><feGaussianBlur stdDeviation="16"/></filter>
+            </defs>
+            <ellipse cx="305" cy="466" rx="178" ry="42" fill="#93C5FD" fill-opacity=".22" filter="url(#softShadow)"/>
+            <!-- Architectural base grid -->
+            <path d="M82 430 304 535 535 414 314 309 82 430Z" fill="url(#floor)" stroke="#BFDBFE" stroke-opacity=".75"/>
+            <path d="m115 414 222 106M151 395l223 106M188 376l221 106M225 357l221 106M260 338l221 106M102 449l232-122M138 467l232-122M174 485l232-122M210 502l232-122M246 520l232-122" stroke="#93C5FD" stroke-opacity=".38" stroke-width="1"/>
+            <!-- Main mass -->
+            <path d="M192 206 347 125 449 178 293 263 192 206Z" fill="#F8FAFC" stroke="#93C5FD" stroke-width="1.4"/>
+            <path d="M192 206 293 263 293 431 192 373V206Z" fill="url(#towerFace)" stroke="#93C5FD" stroke-width="1.4"/>
+            <path d="M293 263 449 178 449 346 293 431V263Z" fill="url(#towerSide)" stroke="#818CF8" stroke-width="1.4"/>
+            <!-- Roof frame -->
+            <path d="M220 191 347 124 420 162 293 230 220 191Z" fill="#fff" fill-opacity=".72" stroke="#60A5FA" stroke-width="1.2"/>
+            <path d="M244 191 347 137 396 163 293 218 244 191Z" stroke="#C4B5FD" stroke-width="1"/>
+            <path d="M293 230v33M347 137v27M396 163v28" stroke="#818CF8" stroke-opacity=".75"/>
+            <!-- Facade rhythm -->
+            <path d="M218 221v137M245 236v137M272 252v137M192 252l101 57M192 294l101 57M192 336l101 57" stroke="#60A5FA" stroke-opacity=".8" stroke-width="1.1"/>
+            <path d="M316 250v165M343 235v165M370 220v165M397 205v165M424 192v139M293 289l156-85M293 331l156-85M293 373l156-85M293 415l156-85" stroke="#6366F1" stroke-opacity=".55" stroke-width="1.1"/>
+            <!-- Transparent second volume -->
+            <path d="M117 270 195 230 246 257 168 300 117 270Z" fill="#fff" fill-opacity=".8" stroke="#93C5FD" stroke-width="1.2"/>
+            <path d="M117 270v97l51 30v-97l-51-30Z" fill="#DBEAFE" fill-opacity=".38" stroke="#93C5FD" stroke-width="1.2"/>
+            <path d="m168 300 78-43v96l-78 44v-97Z" fill="#C7D2FE" fill-opacity=".36" stroke="#818CF8" stroke-width="1.2"/>
+            <path d="m130 277 0 81M145 286v81M168 315l78-43M168 340l78-43M168 365l78-43" stroke="#60A5FA" stroke-opacity=".6"/>
+            <!-- AI pathway -->
+            <path d="M77 192C143 154 167 174 201 131S282 75 336 95 428 83 474 126 493 207 545 220" stroke="url(#blueLine)" stroke-width="1.7" stroke-dasharray="4 7"/>
+            <path d="M89 350C145 319 166 339 210 319S303 290 351 308 442 298 501 346" stroke="url(#blueLine)" stroke-width="1.7" stroke-dasharray="3 8"/>
+            <path d="M347 126 347 82 386 60M449 178 497 153 524 168M293 430v47l-40 22M168 395v39l-33 18" stroke="#818CF8" stroke-opacity=".7" stroke-width="1.2" stroke-dasharray="3 5"/>
+            <!-- Nodes -->
+            <g><circle cx="201" cy="131" r="8" fill="#fff" stroke="#60A5FA" stroke-width="2"/><circle cx="201" cy="131" r="3" fill="#2563EB"/></g>
+            <g><circle cx="336" cy="95" r="9" fill="#fff" stroke="#818CF8" stroke-width="2"/><circle cx="336" cy="95" r="3" fill="#7C3AED"/></g>
+            <g><circle cx="474" cy="126" r="7" fill="#fff" stroke="#60A5FA" stroke-width="2"/><circle cx="474" cy="126" r="2.5" fill="#2563EB"/></g>
+            <g><circle cx="351" cy="308" r="7" fill="#fff" stroke="#10B981" stroke-width="2"/><circle cx="351" cy="308" r="2.5" fill="#10B981"/></g>
+            <g><circle cx="501" cy="346" r="6" fill="#fff" stroke="#818CF8" stroke-width="2"/><circle cx="501" cy="346" r="2" fill="#7C3AED"/></g>
+            <g><circle cx="253" cy="499" r="5" fill="#fff" stroke="#60A5FA" stroke-width="1.5"/><circle cx="253" cy="499" r="1.8" fill="#2563EB"/></g>
+            <g><circle cx="524" cy="168" r="4" fill="#10B981"/><circle cx="135" cy="452" r="4" fill="#818CF8"/></g>
+            <!-- Dimension labels -->
+            <path d="M465 229h50v-27" stroke="#94A3B8" stroke-width="1"/><circle cx="465" cy="229" r="2" fill="#64748B"/>
+            <text x="518" y="197" fill="#64748B" font-size="9" font-family="Inter, sans-serif" letter-spacing="1.2">DATA LAYER</text>
+            <path d="M150 162H104v-22" stroke="#94A3B8" stroke-width="1"/><circle cx="150" cy="162" r="2" fill="#64748B"/>
+            <text x="74" y="128" fill="#64748B" font-size="9" font-family="Inter, sans-serif" letter-spacing="1.2">SPATIAL LOGIC</text>
+            <text x="395" y="485" fill="#64748B" font-size="9" font-family="Inter, sans-serif" letter-spacing="1.2">INTELLIGENT SYSTEMS</text>
+            <path d="M394 475l-47-23" stroke="#94A3B8" stroke-width="1"/>
+          </svg>
+          <div class="art-chip chip-top"><span><i class="chip-dot" aria-hidden="true"></i> Connected fields</span><strong>Design × Intelligence</strong></div>
+          <div class="art-chip chip-left"><span>Architecture</span><strong>Spatial thinking</strong></div>
+          <div class="art-chip chip-bottom"><span>AI workflow</span><strong>From insight to impact</strong></div>
+        </div>
+      </div>
+      <span class="hero-index" aria-hidden="true">01 / INTELLIGENT ARCHITECTURE</span>
+    </section>
+
+    <!-- About -->
+    <section class="section" id="about" aria-labelledby="about-heading">
+      <div class="container-wide">
+        <div class="split-heading">
+          <div class="section-heading reveal">
+            <span class="eyebrow">About Jung-Lin</span>
+            <h2 id="about-heading">不同領域的交會，<br><span class="gradient-text">成為解決問題的新視角。</span></h2>
+            <p>建築訓練我理解空間與現場；數據科學讓資訊成為洞察；AI 則打開流程創新與知識擴展的更多可能。</p>
+          </div>
+          <p class="side-note">A cross-disciplinary perspective<br>grounded in practice, shaped by curiosity.</p>
+        </div>
+
+        <div class="about-grid">
+          <div class="about-visual reveal">
+            <div class="portrait-placeholder">
+              <svg class="portrait-art" viewBox="0 0 440 470" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="個人照片替換用的建築線稿示意圖" role="img">
+                <defs><linearGradient id="portraitGrad" x1="60" y1="60" x2="390" y2="410" gradientUnits="userSpaceOnUse"><stop stop-color="#DBEAFE"/><stop offset=".55" stop-color="#C7D2FE"/><stop offset="1" stop-color="#EDE9FE"/></linearGradient></defs>
+                <path d="M36 388 219 283 405 390 220 468 36 388Z" fill="url(#portraitGrad)" fill-opacity=".5" stroke="#93C5FD" stroke-opacity=".65"/>
+                <path d="M70 370V144l68-42 68 42v195M206 339V99l78-46 78 46v238M138 102v237M70 144l136 77M70 218l136 76M206 178l156 83M206 250l156 83" stroke="#60A5FA" stroke-opacity=".57" stroke-width="1.2"/>
+                <path d="M104 370V178M172 370V178M240 337V131M284 337V105M328 337V131" stroke="#818CF8" stroke-opacity=".6" stroke-width="1"/>
+                <path d="M43 409h350M69 423h300M100 439h236" stroke="#93C5FD" stroke-opacity=".55"/>
+                <path d="M40 120h70M75 85v70M318 50h70M353 15v70" stroke="#94A3B8" stroke-opacity=".65"/>
+                <circle cx="353" cy="15" r="4" fill="#10B981"/><circle cx="75" cy="85" r="4" fill="#7C3AED"/>
+                <text x="40" y="30" fill="#64748B" font-family="Inter, sans-serif" font-size="9" letter-spacing="2">BUILT ENVIRONMENT</text>
+                <text x="255" y="450" fill="#64748B" font-family="Inter, sans-serif" font-size="8" letter-spacing="1.5">SYSTEM / 01</text>
+              </svg>
+              <div class="experience-stamp"><strong>16<span style="font-size:13px">+</span></strong><span>年建築專業實務</span></div>
+              <div class="portrait-caption"><div><strong>張榮麟｜Jung-Lin Chang</strong><span>跨領域整合・專業實踐・持續創新</span></div><span class="micro-label">Portrait<br>placeholder</span></div>
+            </div>
+            <p class="micro-label" style="margin-top:12px">* 此為視覺佔位圖，正式上線前可替換為個人形象照。</p>
+          </div>
+
+          <div class="about-story">
+            <p class="about-quote reveal">「以建築專業為根基，<br>以數據驅動決策，<br>以 <em>AI</em> 開創創新價值。」</p>
+            <p class="about-intro reveal">我是張榮麟，建築師事務所創辦人，擁有 16 年專業從業經驗。長期投入專業實務與跨領域知識整合，致力於將建築專業、數據分析與人工智慧技術相互結合，探索傳統產業數位轉型的更多可能。我相信，真正的創新不只是導入新技術，更在於理解需求、解決問題，並創造具體且可持續的價值。</p>
+            <div class="journey">
+              <article class="journey-item reveal"><div class="journey-number">01</div><div><h3>跨領域專業，打造創新思維</h3><p>以建築設計、規劃、監造、法規應用及工程管理的實務為基礎，將現場經驗與資料思維結合，尋找更清楚、更有效的解題路徑。</p></div></article>
+              <article class="journey-item reveal"><div class="journey-number">02</div><div><h3>深耕教育培訓，促進知識落地</h3><p>曾擔任中國科技大學講師，並參與國立臺灣科技大學及臺北市立大學等校課程與培訓計畫；授課涵蓋行銷資料科學、AI 創新育成、連續性製程機器學習、市場分析與行銷策略，也曾於台科大新南向創業營隊以全英文授課。</p></div></article>
+              <article class="journey-item reveal"><div class="journey-number">03</div><div><h3>跨產業實戰，累積多元解題經驗</h3><p>曾主持或參與金融、化工、醫療、網路廣告、彩妝、出版、高等教育及文教等領域的資料科學專案與相關課程，重視從實際需求出發，建立有脈絡、可溝通的分析方案。</p></div></article>
+              <article class="journey-item reveal"><div class="journey-number">04</div><div><h3>掌握關鍵技術，迎向智慧未來</h3><p>具備 Python、LLM（大型語言模型）及 Google Cloud Platform（GCP）等領域的知識與應用能力，持續探索生成式 AI、機器學習及雲端技術如何回應真實工作情境。</p></div></article>
+              <article class="journey-item reveal"><div class="journey-number">05</div><div><h3>以信任為基礎，創造長期價值</h3><p>重視品質、責任與成果，也相信跨領域合作應建立在需求理解、清楚溝通與務實執行上，讓技術真正成為專業工作的助力。</p></div></article>
+            </div>
+            <div class="skill-line reveal" aria-label="相關技術與專業領域"><span>Architecture</span><span>Python</span><span>Data Science</span><span>Machine Learning</span><span>LLM / GenAI</span><span>Google Cloud</span><span>Project Management</span></div>
+          </div>
+        </div>
+        <div class="principle-band reveal"><div><p>從理解問題開始，讓專業與科技互相成就。</p><small>Practical knowledge. Thoughtful innovation. Long-term value.</small></div><div class="principle-icon" aria-hidden="true"><svg viewBox="0 0 24 24" width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 4 7.5v9L12 21l8-4.5v-9L12 3Z"/><path d="m4.5 7.8 7.5 4.4 7.5-4.4M12 12.2V21"/></svg></div></div>
+      </div>
+    </section>
+
+    <!-- Recent project -->
+    <section class="section intro-video-section" id="introduction-video" aria-labelledby="introduction-video-heading">
+      <div class="container-wide">
+        <div class="section-heading reveal" style="margin-inline:auto;text-align:center">
+          <span class="eyebrow">Introduction / About Me</span>
+          <h2 id="introduction-video-heading">認識我與我的設計理念</h2>
+          <p style="margin-inline:auto">透過影片，了解我的建築專業、設計思維與數位創新的實踐方式。</p>
+        </div>
+        <div class="intro-video-wrap reveal">
+          <div class="intro-video-card">
+            <div class="intro-video-frame">
+              <iframe src="https://www.youtube.com/embed/bRFSOI1zXys?rel=0" title="張榮麟個人介紹影片" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" allowfullscreen></iframe>
+            </div>
+            <p class="intro-video-caption">Jung-Lin Chang｜Architecture × Data Science × AI</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Recent project -->
+    <section class="section" aria-labelledby="recent-project-heading">
+      <div class="container-wide">
+        <div class="recent-project">
+          <div class="recent-project-media reveal">
+            <img src="作品集/外觀右.jpg" alt="本所近期作品外觀右側透視圖" loading="lazy">
+          </div>
+          <div class="recent-project-copy reveal">
+            <span class="eyebrow">Featured / Recent Work</span>
+            <h3 id="recent-project-heading">本所近期作品</h3>
+            <p>以建築設計整合空間體驗、環境回應與數位工具，呈現近期完成的建築外觀作品。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Portfolio -->
+    <section class="section portfolio-section" id="portfolio" aria-labelledby="portfolio-heading">
+      <div class="container-wide">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Selected Works / Portfolio</span>
+          <h2 id="portfolio-heading">建築及室內設計作品</h2>
+          <p>從建築外觀、公共空間到室內場域，整理過往作品的空間表情與設計細節。</p>
+        </div>
+        <div class="portfolio-grid">
+          <figure class="portfolio-card reveal"><img src="作品集/外觀正面.jpg" alt="建築外觀正面作品" loading="lazy"><figcaption>建築外觀｜正面</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/外觀左側.jpg" alt="建築外觀左側作品" loading="lazy"><figcaption>建築外觀｜左側</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/外觀後側.jpg" alt="建築外觀後側作品" loading="lazy"><figcaption>建築外觀｜後側</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/外觀.png" alt="建築外觀整體作品" loading="lazy"><figcaption>建築外觀｜整體</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/大廳.png" alt="室內大廳作品" loading="lazy"><figcaption>室內設計｜大廳</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/禮堂.1.png" alt="室內禮堂作品" loading="lazy"><figcaption>室內設計｜禮堂</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/教室.jpg" alt="室內教室作品" loading="lazy"><figcaption>室內設計｜教室</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/外觀右側.jpg" alt="建築外觀右側作品" loading="lazy"><figcaption>建築外觀｜右側</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/1-26.jpg" alt="建築及室內設計作品一" loading="lazy"><figcaption>設計作品｜01</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/2-26.jpg" alt="建築及室內設計作品二" loading="lazy"><figcaption>設計作品｜02</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/4-26.jpg" alt="建築及室內設計作品三" loading="lazy"><figcaption>設計作品｜03</figcaption></figure>
+          <figure class="portfolio-card reveal"><img src="作品集/1786091592814.jpg" alt="建築及室內設計作品四" loading="lazy"><figcaption>設計作品｜04</figcaption></figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- Expertise -->
+    <section class="section section-soft" id="expertise" aria-labelledby="expertise-heading">
+      <div class="container-wide">
+        <div class="service-intro-row">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Expertise / AI Solutions</span>
+            <h2 id="expertise-heading">讓科技融入現場，<br><span class="gradient-text">讓專業發揮更大價值。</span></h2>
+            <p>整合人工智慧、數據分析與建築專業知識，探索更有效率、更精準且更具前瞻性的工作方式。</p>
+          </div>
+          <p class="service-intro-aside reveal">從資訊整理到專案協作，以實際需求為起點，讓科技能被理解、能被採用，也能持續調整。</p>
+        </div>
+
+        <div class="services-list">
+          <article class="service-row reveal">
+            <div class="service-number">01 /</div>
+            <div class="service-title"><span>Smart Design</span><h3>智慧設計與<br>法規輔助</h3></div>
+            <div class="service-copy"><strong>面對資訊分散、法規資料繁複與文件準備耗時，</strong>可結合 AI 與數位工具，支援設計繪圖、法規資料檢索、執照申請文件整理及法規檢討，協助加速資料彙整與方案評估。AI 輸出仍須由專業人員核對與判斷。</div>
+            <div class="service-visual" aria-label="建築圖面與法規資料整合示意圖" role="img"><svg viewBox="0 0 220 128" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 101V26h62v75M30 39h38M30 51h38M30 63h22M30 75h29M30 87h38" stroke="#93C5FD" stroke-width="1.2"/><path d="M80 42h24v59H80M91 42V28h25v73h-12" stroke="#818CF8" stroke-width="1.2"/><rect x="119" y="20" width="79" height="88" rx="3" fill="#fff" stroke="#BFDBFE"/><path d="M132 37h52M132 48h45M132 59h52M132 70h28" stroke="#CBD5E1" stroke-width="1.5"/><rect x="132" y="82" width="52" height="13" rx="2" fill="#EFF6FF" stroke="#93C5FD"/><path d="m139 88 4 4 7-8" stroke="#2563EB" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"/><circle cx="104" cy="20" r="4" fill="#10B981"/><path d="M104 24v10h15" stroke="#10B981" stroke-dasharray="2 3"/></svg></div>
+          </article>
+          <article class="service-row reveal">
+            <div class="service-number">02 /</div>
+            <div class="service-title"><span>Data-driven Planning</span><h3>數據驅動的<br>基地規劃</h3></div>
+            <div class="service-copy"><strong>面對基地條件、使用需求與前期資訊不易整合的情境，</strong>透過數位化資料管理與 AI 輔助分析，整理現勘、現況測量與規劃條件，提升前期評估的完整性，協助業主掌握可行方案與潛在風險。</div>
+            <div class="service-visual" aria-label="基地平面、空間配置與數據圖層示意圖" role="img"><svg viewBox="0 0 220 128" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M20 23 190 16 201 101 31 112 20 23Z" fill="#EFF6FF" stroke="#93C5FD"/><path d="M34 33 178 27 187 88 42 98 34 33Z" stroke="#60A5FA" stroke-dasharray="3 4"/><path d="M49 40 93 38 98 65 55 68 49 40ZM113 36 162 34 166 60 117 63 113 36ZM61 78 103 75 108 91 66 94 61 78ZM122 72 169 69 174 85 127 88 122 72Z" fill="#C7D2FE" fill-opacity=".5" stroke="#818CF8"/><path d="M26 72h165M101 20v83M139 19v82M47 28l141 64M53 96 176 29" stroke="#93C5FD" stroke-opacity=".7" stroke-width=".8"/><circle cx="101" cy="60" r="5" fill="#fff" stroke="#10B981" stroke-width="2"/><circle cx="101" cy="60" r="1.5" fill="#10B981"/><path d="M105 56 132 25h40" stroke="#10B981" stroke-width="1.1"/><rect x="145" y="18" width="47" height="15" rx="3" fill="#fff" stroke="#A7F3D0"/><text x="151" y="28" fill="#047857" font-size="7" font-family="Inter, sans-serif">SITE DATA</text></svg></div>
+          </article>
+          <article class="service-row reveal">
+            <div class="service-number">03 /</div>
+            <div class="service-title"><span>Intelligent Supervision</span><h3>智慧監造與<br>專案管理</h3></div>
+            <div class="service-copy"><strong>面對施工紀錄分散、協調事項繁多與進度資訊難追蹤，</strong>可運用數位紀錄、文件整合及 AI 輔助分析，支援施工進度追蹤、品質管理、問題彙整與溝通協調，提升專案資訊透明度與管理效率。</div>
+            <div class="service-visual" aria-label="工程進度與品質管理資料視覺化示意圖" role="img"><svg viewBox="0 0 220 128" fill="none" xmlns="http://www.w3.org/2000/svg"><rect x="20" y="18" width="180" height="91" rx="4" fill="#fff" stroke="#BFDBFE"/><path d="M33 35h52M33 43h36" stroke="#94A3B8" stroke-width="1.3"/><rect x="151" y="27" width="35" height="14" rx="7" fill="#D1FAE5"/><circle cx="160" cy="34" r="2.5" fill="#10B981"/><path d="M33 59h52M33 73h52M33 87h52" stroke="#CBD5E1" stroke-width="4" stroke-linecap="round"/><path d="M97 59h83M97 73h63M97 87h75" stroke="#DBEAFE" stroke-width="5" stroke-linecap="round"/><path d="M97 59h53M97 73h40M97 87h64" stroke="#60A5FA" stroke-width="5" stroke-linecap="round"/><path d="m169 72 5 5 9-11" stroke="#10B981" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/><path d="M18 115h184" stroke="#A5B4FC" stroke-width="1.2"/></svg></div>
+          </article>
+        </div>
+
+        <div class="service-bottom reveal">
+          <blockquote>「AI 不會取代建築專業，<br><span>而是放大專業的價值。</span>」</blockquote>
+          <p>透過人機協作與持續創新，讓建築規劃、設計、執照申請、施工監造及專案管理更加智慧化。所有 AI 輔助成果仍以專業審核、法規要求與實際現場判斷為基礎。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Projects -->
+    <section class="section" id="projects" aria-labelledby="projects-heading">
+      <div class="container-wide">
+        <div class="split-heading">
+          <div class="section-heading reveal">
+            <span class="eyebrow">Selected Works / Projects</span>
+            <h2 id="projects-heading">從問題出發，<br><span class="gradient-text">把想法轉化為方法。</span></h2>
+            <p>以專業脈絡、解題過程與可驗證成果呈現每一次實踐。以下為網站版型示範，正式上線時可替換為經確認並獲准公開的專案資料。</p>
+          </div>
+          <p class="side-note">Case studies should communicate<br>context, method, and impact.</p>
+        </div>
+        <div class="project-filters reveal" role="group" aria-label="篩選案例類型">
+          <button class="filter-btn" type="button" data-filter="all" aria-pressed="true">全部案例</button>
+          <button class="filter-btn" type="button" data-filter="architecture" aria-pressed="false">Architecture</button>
+          <button class="filter-btn" type="button" data-filter="construction" aria-pressed="false">Construction & Supervision</button>
+          <button class="filter-btn" type="button" data-filter="ai" aria-pressed="false">AI & Data Innovation</button>
+        </div>
+
+        <div class="projects-grid" id="projects-grid">
+          <article class="project-card reveal" data-category="architecture">
+            <div class="project-art"><svg viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg" aria-label="現代建築立面與空間規劃示意圖" role="img"><defs><linearGradient id="p1bg" x1="0" y1="0" x2="600" y2="320" gradientUnits="userSpaceOnUse"><stop stop-color="#F8FAFC"/><stop offset="1" stop-color="#DBEAFE"/></linearGradient></defs><rect width="600" height="320" fill="url(#p1bg)"/><path d="M0 272 600 220M0 288 600 236M0 304 600 252" stroke="#BFDBFE"/><path d="M85 253V98l103-49 103 49v155M188 49v204M85 98l206 109M85 151l206 109" stroke="#93C5FD" stroke-width="1.4"/><path d="M290 253V76l122-58 122 58v177M412 18v235M290 76l244 130M290 133l244 130M290 190l244 63" stroke="#818CF8" stroke-width="1.4"/><path d="M320 91h61v43h-61zM320 150h61v43h-61zM443 91h61v43h-61zM443 150h61v43h-61z" fill="#fff" fill-opacity=".65" stroke="#A5B4FC"/><path d="M37 253h526" stroke="#64748B" stroke-opacity=".5"/><path d="M72 275h460M104 292h395" stroke="#93C5FD" stroke-opacity=".7"/><circle cx="188" cy="49" r="4" fill="#10B981"/><circle cx="412" cy="18" r="4" fill="#2563EB"/></svg></div>
+            <div class="project-info"><div class="project-meta"><span>01 / Architecture</span><span class="demo-pill">示範版型</span></div><h3>建築規劃與設計溝通</h3><p>案例內容待替換：說明專案背景、基地條件、使用需求，以及如何透過圖面與規劃方法促進決策。</p><div class="project-tags"><span>空間規劃</span><span>設計整合</span><span>圖面溝通</span></div></div>
+          </article>
+          <article class="project-card reveal" data-category="construction">
+            <div class="project-art"><svg viewBox="0 0 520 320" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="520" height="320" fill="#F8FAFC"/><path d="M55 270V86h410v184H55Z" fill="#EFF6FF" stroke="#BFDBFE"/><path d="M55 86 260 25l205 61M88 270V102M130 270V102M172 270V102M214 270V102M256 270V102M298 270V102M340 270V102M382 270V102M424 270V102" stroke="#93C5FD" stroke-width="1.2"/><path d="M55 132h410M55 179h410M55 224h410" stroke="#93C5FD" stroke-width="1.2"/><path d="M74 116h360M74 161h360M74 207h360M74 251h360" stroke="#fff" stroke-width="11"/><path d="M74 116h244M74 161h310M74 207h190M74 251h275" stroke="#60A5FA" stroke-width="3" stroke-linecap="round"/><rect x="340" y="46" width="102" height="32" rx="5" fill="#fff" stroke="#A7F3D0"/><circle cx="354" cy="62" r="4" fill="#10B981"/><path d="M365 58h64M365 66h45" stroke="#94A3B8" stroke-width="1.4"/></svg></div>
+            <div class="project-info"><div class="project-meta"><span>02 / Construction</span><span class="demo-pill">示範版型</span></div><h3>施工監造與品質資訊整合</h3><p>案例內容待替換：描述現場問題、紀錄方式、協調節點與品質追蹤流程，並補上可公開佐證的成果。</p><div class="project-tags"><span>品質管理</span><span>工程協調</span><span>進度追蹤</span></div></div>
+          </article>
+          <article class="project-card reveal" data-category="ai">
+            <div class="project-art"><svg viewBox="0 0 600 320" fill="none" xmlns="http://www.w3.org/2000/svg"><rect width="600" height="320" fill="#F8FAFC"/><circle cx="302" cy="160" r="99" fill="#EFF6FF" stroke="#BFDBFE" stroke-dasharray="4 6"/><circle cx="302" cy="160" r="69" fill="#fff" stroke="#A5B4FC"/><rect x="269" y="127" width="66" height="66" rx="17" fill="url(#aiLogo)"/><defs><linearGradient id="aiLogo" x1="269" y1="127" x2="335" y2="193"><stop stop-color="#2563EB"/><stop offset="1" stop-color="#7C3AED"/></linearGradient></defs><path d="M285 150h34M285 160h34M285 170h22" stroke="#fff" stroke-width="3" stroke-linecap="round"/><path d="M302 91V52M302 229v39M233 160h-42M371 160h42M253 111l-29-29M351 209l29 29M351 111l29-29M253 209l-29 29" stroke="#93C5FD" stroke-width="1.5"/><g fill="#fff" stroke="#60A5FA" stroke-width="2"><circle cx="302" cy="52" r="7"/><circle cx="302" cy="268" r="7"/><circle cx="191" cy="160" r="7"/><circle cx="413" cy="160" r="7"/><circle cx="224" cy="82" r="6"/><circle cx="380" cy="238" r="6"/><circle cx="380" cy="82" r="6"/><circle cx="224" cy="238" r="6"/></g><path d="M70 66h95M70 77h63M432 240h93M452 251h73M70 252h84M455 66h70" stroke="#CBD5E1" stroke-width="2" stroke-linecap="round"/><circle cx="91" cy="66" r="3" fill="#10B981"/><circle cx="492" cy="240" r="3" fill="#7C3AED"/></svg></div>
+            <div class="project-info"><div class="project-meta"><span>03 / AI & Data</span><span class="demo-pill">示範版型</span></div><h3>AI 工作流程與資料應用</h3><p>案例內容待替換：呈現使用情境、資料來源、流程設計與人機協作方式，避免將示意圖當作實際部署成果。</p><div class="project-tags"><span>LLM</span><span>資料分析</span><span>流程自動化</span></div></div>
+          </article>
+        </div>
+        <p class="project-note">※ 本區所有案例目前均為排版與內容示意，並非已完成或已公開的真實專案。請取得必要授權並確認資料後再替換發布。</p>
+      </div>
+    </section>
+
+    <!-- Insights -->
+    <section class="section section-soft" id="insights" aria-labelledby="insights-heading">
+      <div class="container-wide insights-grid">
+        <div class="insights-aside reveal">
+          <span class="eyebrow">Insights / Field Notes</span>
+          <h2 id="insights-heading">Ideas Into Impact.<br><span>讓知識轉化為</span><br>實際價值。</h2>
+          <p>分享建築專業、AI 工具與數據思維的交會觀察，將技術概念轉化成更容易理解與實踐的方法。</p>
+          <div class="insights-manifesto">好方法不只在於技術新穎，更在於能否回應真實需求、融入工作流程，並帶來可持續的改善。</div>
+        </div>
+        <div class="insights-content reveal">
+          <div class="insights-list">
+            <article class="article-row"><div class="article-index">01</div><div><div class="article-category">Architecture × Digital</div><h3>建築專業如何開始數位轉型？從工作流程盤點開始</h3><p>示範文章｜先理解資訊在哪裡產生、如何交接，再決定哪些步驟值得數位化。</p></div><span class="demo-pill" aria-label="示範文章，尚未發表">未發表</span></article>
+            <article class="article-row"><div class="article-index">02</div><div><div class="article-category">Generative AI / LLM</div><h3>把大型語言模型帶進專業工作：先從可檢核的任務開始</h3><p>示範文章｜整理文件、建立摘要與擬定初稿時，如何保留來源脈絡與人工覆核。</p></div><span class="demo-pill" aria-label="示範文章，尚未發表">未發表</span></article>
+            <article class="article-row"><div class="article-index">03</div><div><div class="article-category">Data Science / Python</div><h3>從資料到決策：分析之前，先問對問題</h3><p>示範文章｜釐清決策情境、資料限制與成功條件，讓分析結果能連結實際行動。</p></div><span class="demo-pill" aria-label="示範文章，尚未發表">未發表</span></article>
+            <article class="article-row"><div class="article-index">04</div><div><div class="article-category">AI-assisted Project Management</div><h3>工程管理中的 AI 輔助：從紀錄整理到問題追蹤</h3><p>示範文章｜建立清楚的紀錄格式與審查節點，讓自動化協助資訊流動，而不是取代專業判斷。</p></div><span class="demo-pill" aria-label="示範文章，尚未發表">未發表</span></article>
+          </div>
+          <p class="article-demo-note">以上皆為文章主題與摘要示範，尚未發表，也未設定文章頁面。正式使用時，請替換為實際文章及有效連結。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Core Products & Technical Solutions -->
+    <section class="section section-soft" id="solutions" aria-labelledby="solutions-heading">
+      <div class="container-wide">
+        <div class="section-heading reveal">
+          <span class="eyebrow">Core Products &amp; Technical Solutions</span>
+          <h2 id="solutions-heading">核心產品與技術解決方案</h2>
+          <p>以數位工具整合設計溝通、現況建模與工程預算，讓方案更清楚、決策更有效率。</p>
+        </div>
+        <div class="solutions-grid">
+          <article class="solution-card reveal">
+            <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-cubes"></i></div>
+            <h3>3D模擬繪圖</h3>
+            <p>將討論方案繪製成模擬圖並生成動畫。</p>
+          </article>
+          <article class="solution-card reveal">
+            <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-helicopter"></i></div>
+            <h3>現況空照模型</h3>
+            <p>用無人機將現況基地紀錄，並生成現況地形3D模型。</p>
+          </article>
+          <article class="solution-card reveal">
+            <div class="solution-icon" aria-hidden="true"><i class="fa-solid fa-file-invoice-dollar"></i></div>
+            <h3>預算概估</h3>
+            <p>利用PCCES製作預算包含詳細價目表及單價分析表。</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="contact-section" id="contact" aria-labelledby="contact-heading">
+      <div class="container-wide">
+        <div class="contact-panel reveal">
+          <div class="contact-content">
+            <div class="contact-details">
+              <div><strong>與我們取得聯繫</strong></div>
+              <div>聯絡信箱：<a href="mailto:arch3202@gmail.com">arch3202@gmail.com</a></div>
+              <div>電話：<a href="tel:+886223655038">(02) 2365-5038</a>（M：<a href="tel:+886972857601">0972-857-601</a>）</div>
+              <div>地址：100033 台北市中正區金門街39號</div>
+              <div>統編：26387014</div>
+            </div>
+            <span class="eyebrow">Contact / Collaboration</span>
+            <h2 id="contact-heading">Let's Build<br>What's Next.</h2>
+            <h3>讓我們一起探索下一個可能。</h3>
+            <p>無論是建築設計與監造、AI 導入、資料分析、企業培訓，或跨領域創新合作，都歡迎進一步交流。從需求出發，找到真正適合的合作方式。</p>
+          </div>
+          <div class="contact-actions">
+            <div class="contact-social" aria-labelledby="contact-social-label">
+              <div class="contact-social-label" id="contact-social-label">聯絡我 Contact Me</div>
+              <div class="social-links">
+                <a class="social-link social-line" href="https://line.me/ti/p/ZJmEcnhVyL" target="_blank" rel="noopener noreferrer" aria-label="透過 LINE 聯絡" title="LINE"><i class="fa-brands fa-line" aria-hidden="true"></i></a>
+                <a class="social-link social-facebook" href="https://www.facebook.com/profile.php?id=100057756065734&amp;locale=zh_TW" target="_blank" rel="noopener noreferrer" aria-label="前往 Facebook" title="Facebook"><i class="fa-brands fa-facebook-f" aria-hidden="true"></i></a>
+              </div>
+            </div>
+            <a class="form-link" href="https://forms.gle/8e6xtasQpXEFgZ2f7" target="_blank" rel="noopener noreferrer"><i class="fa-solid fa-clipboard-list" aria-hidden="true"></i>填寫需求表單</a>
+            <a class="btn btn-primary" href="https://calendar.app.google/kggoqgtTJ1fHBU5t9" target="_blank" rel="noopener noreferrer">預約專業諮詢 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7 17 17 7M7 7h10v10"/></svg></a>
+            <a class="btn" href="#contact-details">合作洽詢方式 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg></a>
+            <div class="contact-placeholder" id="contact-details"><strong>合作邀約｜教育培訓｜跨域專案</strong><br>電子郵件與其他聯絡方式待補充。正式上線前請將此處替換為實際聯絡資訊。</div>
+          </div>
+          <form class="contact-form" action="https://docs.google.com/forms/d/e/1FAIpQLSdazILvxJQHjISqvxbqqboSrrpNlA7EQhUUeA4F_HdkoHJuTQ/formResponse" method="post" target="google-form-submit-frame">
+            <h3>聯絡我們</h3>
+            <label>您的姓名／稱呼<input type="text" name="name" autocomplete="name" required></label>
+            <label>聯絡電子信箱<input type="email" name="email" autocomplete="email" required></label>
+            <label>您的需求<select name="service" required><option value="" selected disabled>請選擇需求類型</option><option>設計繪圖</option><option>法規諮詢</option><option>工程監造</option><option>模型製作</option><option>執照申請</option></select></label>
+            <label>適合聯絡的時間<select name="contact_time" required><option value="" selected disabled>請選擇方便時段</option><option>平日上午 09:00–12:00</option><option>平日下午 13:30–17:30</option><option>平日晚上 18:00–20:00</option><option>週末上午 09:00–12:00</option><option>時間皆可，請先以 Email 聯絡</option></select></label>
+            <label class="full-field">需求簡介（詳細文字）<textarea name="message" placeholder="請簡述案件地點、預計時程與希望協助的內容" required></textarea></label>
+            <button class="btn btn-primary" type="submit"><i class="fa-solid fa-paper-plane" aria-hidden="true"></i> 送出聯絡需求</button>
+          </form>
+          <iframe name="google-form-submit-frame" title="Google 表單背景送出視窗" class="sr-only"></iframe>
+        </div>
+        <div class="form-success-modal" id="form-success-modal" role="dialog" aria-modal="true" aria-labelledby="form-success-title">
+          <div class="form-success-dialog">
+            <i class="fa-solid fa-circle-check" aria-hidden="true"></i>
+            <h3 id="form-success-title">需求已送出</h3>
+            <p>我們將盡快與您聯絡！</p>
+            <button class="btn btn-primary" type="button" id="form-success-close">關閉</button>
+          </div>
+        </div>
+        <footer class="footer">
+          <div class="footer-row">
+            <div><div class="footer-brand">JUNG-LIN CHANG <span style="color:#005bac">/</span> 建築 × 數據 × AI</div><div class="footer-note" style="text-align:left;margin-top:5px">Professional practice. Intelligent possibilities.</div></div>
+            <div style="display:flex;align-items:center;gap:24px;flex-wrap:wrap"><span class="footer-note">© <span id="current-year">2026</span> Jung-Lin Chang. All rights reserved.</span><a class="back-top" href="#home">Back to top <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 19V5M6 11l6-6 6 6"/></svg></a></div>
+          </div>
+        </footer>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    (() => {
+      'use strict';
+
+      const root = document.documentElement;
+      const body = document.body;
+      const header = document.getElementById('site-header');
+      const menuToggle = document.getElementById('menu-toggle');
+      const nav = document.getElementById('primary-navigation');
+      const navLinks = Array.from(nav.querySelectorAll('a[href^="#"]'));
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)');
+
+      // Only enable reveal transitions when JavaScript is present.
+      root.classList.add('js-ready');
+
+      // Mobile navigation: keyboard, touch, Escape, and link activation support.
+      function closeMenu() {
+        nav.classList.remove('is-open');
+        menuToggle.setAttribute('aria-expanded', 'false');
+        menuToggle.setAttribute('aria-label', '開啟導覽選單');
+        body.classList.remove('menu-open');
+      }
+      function openMenu() {
+        nav.classList.add('is-open');
+        menuToggle.setAttribute('aria-expanded', 'true');
+        menuToggle.setAttribute('aria-label', '關閉導覽選單');
+        body.classList.add('menu-open');
+      }
+      menuToggle.addEventListener('click', () => {
+        const expanded = menuToggle.getAttribute('aria-expanded') === 'true';
+        if (expanded) closeMenu(); else openMenu();
+      });
+      navLinks.forEach((link) => link.addEventListener('click', closeMenu));
+      document.addEventListener('keydown', (event) => {
+        if (event.key === 'Escape') {
+          closeMenu();
+          menuToggle.focus();
+        }
+      });
+      window.addEventListener('resize', () => {
+        if (window.innerWidth > 850) closeMenu();
+      }, { passive: true });
+
+      // Glass navigation on scroll.
+      let scrollTicking = false;
+      function updateHeader() {
+        header.classList.toggle('scrolled', window.scrollY > 12);
+        scrollTicking = false;
+      }
+      window.addEventListener('scroll', () => {
+        if (!scrollTicking) {
+          window.requestAnimationFrame(updateHeader);
+          scrollTicking = true;
+        }
+      }, { passive: true });
+      updateHeader();
+
+      // Typewriter effect while keeping a complete, crawlable and screen-reader title in the HTML.
+      const typedTitle = document.getElementById('typed-title');
+      if (typedTitle && !prefersReducedMotion.matches) {
+        const fullTitle = '讓建築遇見 AI\n專業創造未來';
+        typedTitle.textContent = '';
+        let charIndex = 0;
+        const typeNext = () => {
+          if (charIndex >= fullTitle.length) return;
+          typedTitle.textContent += fullTitle.charAt(charIndex);
+          charIndex += 1;
+          window.setTimeout(typeNext, charIndex < 7 ? 105 : 82);
+        };
+        // Delay by one frame so the initial layout is established before typing.
+        window.requestAnimationFrame(() => window.setTimeout(typeNext, 220));
+      }
+
+      // Reveal content once, using IntersectionObserver when supported.
+      const revealItems = document.querySelectorAll('.reveal');
+      if ('IntersectionObserver' in window && !prefersReducedMotion.matches) {
+        const observer = new IntersectionObserver((entries, currentObserver) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add('is-visible');
+              currentObserver.unobserve(entry.target);
+            }
+          });
+        }, { threshold: 0.12, rootMargin: '0px 0px -28px 0px' });
+        revealItems.forEach((item) => observer.observe(item));
+      } else {
+        revealItems.forEach((item) => item.classList.add('is-visible'));
+      }
+
+      // Highlight the current section in the navigation.
+      const sections = Array.from(document.querySelectorAll('main section[id]'));
+      if ('IntersectionObserver' in window) {
+        const sectionObserver = new IntersectionObserver((entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              navLinks.forEach((link) => {
+                if (link.getAttribute('href') === `#${entry.target.id}`) {
+                  link.setAttribute('aria-current', 'location');
+                } else {
+                  link.removeAttribute('aria-current');
+                }
+              });
+            }
+          });
+        }, { rootMargin: '-28% 0px -62% 0px', threshold: 0 });
+        sections.forEach((section) => sectionObserver.observe(section));
+      }
+
+      // Project category filter. All sample content is clearly marked as a placeholder.
+      const filterButtons = Array.from(document.querySelectorAll('.filter-btn'));
+      const projectCards = Array.from(document.querySelectorAll('.project-card'));
+      filterButtons.forEach((button) => {
+        button.addEventListener('click', () => {
+          const filter = button.dataset.filter;
+          filterButtons.forEach((other) => other.setAttribute('aria-pressed', String(other === button)));
+          projectCards.forEach((card) => {
+            card.hidden = filter !== 'all' && card.dataset.category !== filter;
+          });
+        });
+      });
+
+      // Dynamic year without affecting the main content if JavaScript is unavailable.
+      const contactForm = document.querySelector('.contact-form');
+      const successModal = document.getElementById('form-success-modal');
+      const successClose = document.getElementById('form-success-close');
+      if (contactForm && successModal) {
+        contactForm.addEventListener('submit', async (event) => {
+          event.preventDefault();
+          const values = new FormData(contactForm);
+          const payload = new URLSearchParams();
+          payload.set('entry.588998168', values.get('name') || '');
+          payload.set('entry.476214014', values.get('email') || '');
+          payload.set('entry.1610329698', values.get('service') || '');
+          payload.set('entry.1646642689', values.get('message') || '');
+          payload.set('entry.1091995575', values.get('contact_time') || '');
+          try {
+            await fetch(contactForm.action, { method: 'POST', mode: 'no-cors', body: payload });
+            contactForm.reset();
+            successModal.classList.add('is-visible');
+          } catch (error) {
+            successModal.classList.add('is-visible');
+          }
+        });
+        successClose?.addEventListener('click', () => successModal.classList.remove('is-visible'));
+        successModal.addEventListener('click', (event) => {
+          if (event.target === successModal) successModal.classList.remove('is-visible');
+        });
+      }
+
+      // Dynamic year without affecting the main content if JavaScript is unavailable.
+      const year = document.getElementById('current-year');
+      if (year) year.textContent = String(new Date().getFullYear());
+    })();
+  </script>
+</body>
+</html>
